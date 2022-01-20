@@ -2,9 +2,8 @@ import React, { useState } from "react";
 
 
 import "components/Application.scss";
-import "components/InterviewerListItem"
 import DayList from "./DayList";
-
+import InterviewerList from "./InterviewerList";
 
 
 export default function Application(props) {
