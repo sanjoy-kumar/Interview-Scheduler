@@ -1,31 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+
 
 
 import "components/Application.scss";
 import DayList from "./DayList";
 import InterviewerList from "./InterviewerList";
+import Appointment from "components/Appointment";
+import useApplicationData from "hooks/useApplicationData";
+
 
 
 export default function Application(props) {
-  const [day, setDay] = useState("Monday");
-  const days = [
-    {
-      id: 1,
-      name: "Monday",
-      spots: 2,
-    },
-    {
-      id: 2,
-      name: "Tuesday",
-      spots: 5,
-    },
-    {
-      id: 3,
-      name: "Wednesday",
-      spots: 0,
-    },
-  ];
 
+  const { state, setDay } = useApplicationData();
 
 
   return (
@@ -40,8 +27,8 @@ export default function Application(props) {
         <nav className="sidebar__menu">
 
           <DayList
-            days={days}
-            day={day}
+            days={state.days}
+            day={state.day}
             setDay={setDay}
           />
 
@@ -53,7 +40,7 @@ export default function Application(props) {
         />
       </section>
       <section className="schedule">
-        {/* Replace this with the schedule elements durint the "The Scheduler" activity. */}
+        <Appointment key="last" time="5pm" />
       </section>
     </main>
   );
