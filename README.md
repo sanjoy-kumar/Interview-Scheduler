@@ -15,6 +15,14 @@ Features are as follows:
 7. A user can cancel an existing interview, a pop-up message will ask to confirm the action before permanently deleting an interview
 8. Days display currently remaining spots and capture updates after each modification
 
+## Project Layout:
+
+![Project Layout](./public/images/00.jpg)
+
+
+
+
+
 ## Setup
 
 Install dependencies with `npm install`.
