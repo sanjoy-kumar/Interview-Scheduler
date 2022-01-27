@@ -1,37 +1,32 @@
-import React, { useState, useEffect } from "react";
-
-
+import React from "react";
 
 import "components/Application.scss";
 import DayList from "./DayList";
-import InterviewerList from "./InterviewerList";
 import Appointment from "components/Appointment";
-//import useApplicationData from "hooks/useApplicationData";
-import axios from "axios";
-
+import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
+import useApplicationData from "hooks/useApplicationData";
 
 export default function Application(props) {
 
-  const [state, setState] = useState({
-    day: "Monday",
-    days: [],
-    appointments: {}
+  const { state, setDay, bookInterview, cancelInterview } = useApplicationData();
+
+  const appointments = getAppointmentsForDay(state, state.day);
+  const interviewers = getInterviewersForDay(state, state.day);
+
+  const schedule = appointments.map((appointment) => {
+    const interview = getInterview(state, appointment.interview)
+
+    return (
+        <Appointment 
+          {...appointment}
+          key={appointment.id}
+          interview={interview}
+          interviewers={interviewers}
+          bookInterview={bookInterview}
+          cancelInterview={cancelInterview}
+        />
+      )
   });
-
-
-  
-  const setDay = day => setState({ ...state, day });
-  const setDays = (days) => {
-    setState(prev => ({ ...prev, days }));   
-}
-
-  useEffect(() => {
-    axios.get("/api/days").then(response => setDays(response.data));
-
-    
-  }, []);
-
-  
 
   return (
     <main className="layout">
@@ -43,13 +38,13 @@ export default function Application(props) {
         />
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu">
-
-          <DayList
-            days={state.days}
-            day={state.day}
-            setDay={setDay}
-          />
-
+        <DayList
+          days={state.days}
+          day={state.day}
+          setDay={setDay}
+          bookInterview={bookInterview}
+          cancelInterview={cancelInterview}
+        />
         </nav>
         <img
           className="sidebar__lhl sidebar--centered"
@@ -58,8 +53,11 @@ export default function Application(props) {
         />
       </section>
       <section className="schedule">
-        <Appointment key="last" time="5pm" />
+        {schedule}
+        <Appointment key="last" time="5pm" bookInterview={bookInterview} cancelInterview={cancelInterview} 
+        />
       </section>
     </main>
   );
 }
+
