@@ -58,3 +58,26 @@ npm test
 ```sh
 npm run storybook
 ```
+
+
+## Dependencies
+
+i. Axios
+ii. Classnames
+iii. Normalize.css
+iv. React
+v. React-dom
+vi. React-scripts
+vii. Babel/core
+viii. Storybook/addon-actions
+ix. Storybook/addon-backgrounds
+x. Storybook/addon-links
+xi. Storybook/addons
+xii. Storybook/react
+xiii. Testing-library/jest-dom
+xiv. Testing-library/react
+xv. Testing-library/react-hooks
+xvi. Babel-loader
+xvii. Node-sass
+xviii. Prop-types
+xix.React-test-renderer
