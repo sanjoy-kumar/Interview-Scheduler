@@ -21,15 +21,15 @@ Features are as follows:
 
 ## Home View:
 
-![Home View](./public/images/01.jpg)
+![Home View](./public/images/11.jpg)
 
 ## New Appointment Booking:
 
-![New Appointment Booking](./public/images/02.jpg)
+![New Appointment Booking](./public/images/22.jpg)
 
 ## Interview Cancel:
 
-![Interview Cancel](./public/images/03.jpg)
+![Interview Cancel](./public/images/33.jpg)
 
 
 
