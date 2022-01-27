@@ -19,6 +19,20 @@ Features are as follows:
 
 ![Project Layout](./public/images/00.jpg)
 
+## Home View:
+
+![Project Layout](./public/images/01.jpg)
+
+## New Appointment Booking:
+
+![Project Layout](./public/images/02.jpg)
+
+## Interview Cancel:
+
+![Project Layout](./public/images/03.jpg)
+
+
+
 
 
 
