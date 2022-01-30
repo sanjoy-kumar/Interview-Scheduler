@@ -5,11 +5,10 @@ import PropTypes from 'prop-types';
 
 export default function InterviewerList(props) {
 
-
   const interviewers = props.interviewers.map(interviewerObj => {
 
     return (
-      <InterviewerListItem 
+      <InterviewerListItem
         key={interviewerObj.id}
         name={interviewerObj.name}
         avatar={interviewerObj.avatar}
@@ -23,15 +22,12 @@ export default function InterviewerList(props) {
     <section className="interviewers">
       <h4 className="interviewers__header text--light">Interviewers</h4>
       <ul className="interviewers__list">{interviewers}</ul>
-    </section> 
+    </section>
   )
 }
-
-// Prop Types
 
 InterviewerList.propTypes = {
   value: PropTypes.number,
   onChange: PropTypes.func.isRequired
 }
-
 
