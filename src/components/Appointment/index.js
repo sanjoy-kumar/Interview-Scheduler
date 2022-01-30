@@ -40,6 +40,10 @@ export default function Appointment(props) {
   }, [mode, transition, props.interview])
 
   function save(name, interviewer) {
+
+    if(!interviewer) {
+      transition(ERROR_SAVE, true);
+    }
     
     if (name && interviewer) {
       transition(SAVING);
