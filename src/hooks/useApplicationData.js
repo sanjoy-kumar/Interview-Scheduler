@@ -8,14 +8,14 @@ import reducer, {
 
 export default function useApplicationData(props) {
   
-  const [state, setState] = useReducer(reducer, {
+  const [state, dispatch] = useReducer(reducer, {
     day: "Monday",
     days: [],
     appointments: {},
     interviewers: {}
   });
 
-  const setDay = day => setState({ type: SET_DAY, day: day });
+  const setDay = day => dispatch({ type: SET_DAY, day: day });
 
   useEffect(() => {
     Promise.all([
@@ -23,7 +23,7 @@ export default function useApplicationData(props) {
       axios.get("/api/appointments"),
       axios.get("/api/interviewers")
     ]).then(all => {
-      setState({
+      dispatch({
         type: SET_APPLICATION_DATA,
         days: all[0].data,
         appointments: all[1].data,
@@ -34,7 +34,8 @@ export default function useApplicationData(props) {
 
   function bookInterview(id, interview) {
     return axios.put(`/api/appointments/${id}`, { interview }).then(r =>
-      setState({
+
+      dispatch({
         type: SET_INTERVIEW,
         id,
         interview
@@ -44,7 +45,7 @@ export default function useApplicationData(props) {
 
   function cancelInterview(id) {
     return axios.delete(`/api/appointments/${id}`).then(r =>
-      setState({
+      dispatch({
         type: SET_INTERVIEW,
         id,
         interview: null
@@ -58,3 +59,4 @@ export default function useApplicationData(props) {
     cancelInterview
   };
 }
+
