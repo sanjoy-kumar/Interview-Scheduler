@@ -25,8 +25,10 @@ export default function Show(props) {
             alt="Delete"
             onClick={props.onDelete}
           />
+
         </section>
       </section>
     </main>
   )
 }
+
