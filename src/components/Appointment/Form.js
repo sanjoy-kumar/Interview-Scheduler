@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Button from 'components/Button';
 import InterviewerList from 'components/InterviewerList';
 
-
 export default function Form(props) {
 
   //For keeping track of the name
@@ -42,7 +41,6 @@ export default function Form(props) {
             value={currentName}
             placeholder="Enter Student Name"
             data-testid="student-name-input"
-    
           />
         <section className="appointment__validation">{error}</section>
         </form>
@@ -57,4 +55,3 @@ export default function Form(props) {
     </main>
   )
 }
-

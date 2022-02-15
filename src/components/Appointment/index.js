@@ -40,10 +40,6 @@ export default function Appointment(props) {
   }, [mode, transition, props.interview])
 
   function save(name, interviewer) {
-
-    if(!interviewer) {
-      transition(ERROR_SAVE, true);
-    }
     
     if (name && interviewer) {
       transition(SAVING);
@@ -67,7 +63,7 @@ export default function Appointment(props) {
       .then(() => transition(EMPTY))
       .catch(() => transition(ERROR_DELETE, true))
     } else {
-      transition(CONFIRM);      
+      transition(CONFIRM);
     }
   }
 
@@ -116,8 +112,8 @@ export default function Appointment(props) {
       {mode === ERROR_SAVE && 
         <Error 
           message="Could not create appointment"
-          onClose={back}          
-        />        
+          onClose={back}
+        />
       }
       {mode === ERROR_DELETE && 
         <Error 
