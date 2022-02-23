@@ -57,20 +57,14 @@ export default function Appointment(props) {
 
   function remove() {
 
-    // if (mode === CONFIRM) {
-    //   transition(DELETING, true)
-    //   props.cancelInterview(props.id)
-    //   .then(() => transition(EMPTY))
-    //   .then(() => transition(ERROR_DELETE, true))
-    //   .catch(() => transition(ERROR_DELETE, true))
-    // } else {
-    //   transition(CONFIRM);    
-    // }
-    
-    transition(DELETING, true);
-    props.cancelInterview(props.id)
-    .then((response) => response ? transition(EMPTY) : transition(ERROR_DELETE, true))
-    
+    if (mode === CONFIRM) {
+      transition(DELETING, true)
+      props.cancelInterview(props.id)
+      .then(() => transition(EMPTY))
+      .catch(() => transition(ERROR_DELETE, true))
+    } else {
+      transition(CONFIRM);    
+    }    
   }
 
   function edit() {
