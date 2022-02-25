@@ -36,21 +36,11 @@ export default function Application(props) {
         />
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu">
-<<<<<<< HEAD
           <DayList
             days={state.days}
             day={state.day}
             setDay={setDay}
           />
-=======
-        <DayList
-          days={state.days}
-          day={state.day}
-          setDay={setDay}
-//           bookInterview={bookInterview}
-//           cancelInterview={cancelInterview}
-        />
->>>>>>> 3e13c8f2efdc4bd6dee056eb13006caf5f45642b
         </nav>
         <img
           className="sidebar__lhl sidebar--centered"
