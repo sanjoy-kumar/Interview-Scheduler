@@ -47,8 +47,8 @@ export default function Application(props) {
           days={state.days}
           day={state.day}
           setDay={setDay}
-          bookInterview={bookInterview}
-          cancelInterview={cancelInterview}
+//           bookInterview={bookInterview}
+//           cancelInterview={cancelInterview}
         />
         </nav>
         <img
