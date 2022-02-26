@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-
+//import React, { useEffect } from 'react';
+import React from 'react';
 import Header from 'components/Appointment/Header';
 import Show from 'components/Appointment/Show';
 import Empty from 'components/Appointment/Empty';
@@ -27,17 +27,17 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
 
-  useEffect(() => {
+//   useEffect(() => {
 
-    if (props.interview && mode === EMPTY) {
-      transition(SHOW);
-    }
+//     if (props.interview && mode === EMPTY) {
+//       transition(SHOW);
+//     }
 
-    if (!props.interview && mode === SHOW) {
-      transition(EMPTY);
-    }
+//     if (!props.interview && mode === SHOW) {
+//       transition(EMPTY);
+//     }
 
-  }, [mode, transition, props.interview])
+//   }, [mode, transition, props.interview])
 
   function save(name, interviewer) {
 
@@ -103,8 +103,8 @@ export default function Appointment(props) {
         />}
       {mode === EDIT &&
         <Form
-          name={props.name ? props.name : props.interview.student}
-          value={props.value ? props.value : props.interview.interviewer.id}
+          name={props.interview.student}
+          value={props.interview.interviewer.id}
           interviewers={props.interviewers}
           onSave={save}
           onCancel={back}
