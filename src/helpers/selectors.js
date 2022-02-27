@@ -1,45 +1,37 @@
-//Go through an appointments object and return an array pf all the nested objects with that id
-const matchIds = (appointments, ids) => {
-  const matched = ids.map(id => appointments[id]);
-  return matched;
-}
+// Helper functions for managing appointments and interviews.
 
-//Match the appointments given in the days object to those in the appointments object
-function getAppointmentsForDay(state, day) {
+export function getAppointmentsForDay(state, day) {
+  const found = state.days.find((d) => day === d.name);
 
-  let appointmentArr = [];
-  // eslint-disable-next-line
-  state.days.map(dayObject => {
-    if (dayObject.name === day) {
-      dayObject.appointments.forEach(apptId => appointmentArr.push(apptId))
-    }
-  })
-  return matchIds(state.appointments, appointmentArr);
-}
-
-function getInterview(state, interview) {
-  if (!interview) {
-    return null;
+  if (state.days.length === 0 || !found) {
+    return [];
   }
-
-  const interviewerInfo = state.interviewers[interview.interviewer];
-  return {
-    student: interview.student,
-    interviewer: interviewerInfo
-  }
+  return found.appointments.map((id) => state.appointments[id]);
 }
 
-function getInterviewersForDay(state, day) {
+export function getInterviewersForDay(state, day) {
+  const found = state.days.find((d) => day === d.name);
 
-  let interviewersArr = [];
-  // eslint-disable-next-line
-  state.days.map(dayObject => {
-    if (dayObject.name === day) {
-      dayObject.interviewers.forEach(interviewerId => interviewersArr.push(interviewerId))
+  if (state.days.length === 0 || found === undefined) return [];
+
+  return found.interviewers.map((id) => state.interviewers[id]);
+}
+
+export function getInterview(state, interview) {
+  return (
+    interview && {
+      ...interview,
+      interviewer: state.interviewers[interview.interviewer],
     }
-  })
-  return matchIds(state.interviewers, interviewersArr);
+  );
 }
-
-module.exports = { matchIds, getAppointmentsForDay, getInterview, getInterviewersForDay };
-
+export const updateSpotsForDay = (appointments, days, dayId) => {
+  try {
+    const day = days.find((day) => day.id === dayId);
+    day.spots = day.appointments.filter(
+      (appointmentId) => !appointments[appointmentId].interview
+    ).length;
+  } catch (err) {
+    return [];
+  }
+};

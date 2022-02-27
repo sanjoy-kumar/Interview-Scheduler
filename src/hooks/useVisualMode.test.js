@@ -1,9 +1,10 @@
-import { renderHook, act } from "@testing-library/react-hooks";
-import useVisualMode from "hooks/useVisualMode";
+import { renderHook, act } from "react-hooks-testing-library";
+import useVisualMode from "./useVisualMode";
 
+// Mock mode transitions
 const FIRST = "FIRST";
 const SECOND = "SECOND";
-const THIRD ="THIRD";
+const THIRD = "THIRD";
 
 test("useVisualMode should initialize with default value", () => {
   const { result } = renderHook(() => useVisualMode(FIRST));
@@ -53,4 +54,3 @@ test("useVisualMode should replace the current mode", () => {
   act(() => result.current.back());
   expect(result.current.mode).toBe(FIRST);
 });
-

@@ -1,13 +1,12 @@
 import React from "react";
 import "components/Button.scss";
-const classNames = require('classnames')
+import classNames from "classnames";
 
-
+// React component for the Buttons
 export default function Button(props) {
-
-   let buttonClass = classNames('button', {
-      'button--confirm': props.confirm,
-      'button--danger': props.danger
+   let buttonClass = classNames("button", {
+      "button--confirm": props.confirm,
+      "button--danger": props.danger,
    });
 
    return (
@@ -20,4 +19,3 @@ export default function Button(props) {
       </button>
    );
 }
-
